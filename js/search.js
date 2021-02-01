@@ -2,7 +2,14 @@ $(document).ready(function() {
     $("#myInput").on("keyup", function() {
         var value = $(this).val().toLowerCase();
         $("#myTable tr").filter(function() {
-          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+          var array = value.split(' ');
+          var isPresentInRow = true;
+          array.forEach( element => {
+          				isPresentInRow = isPresentInRow && ($(this).text().toLowerCase().indexOf(element) > -1)
+                        console.log(element);
+                        console.log(isPresentInRow);
+                        });
+          $(this).toggle(isPresentInRow)
         });
       });
 
