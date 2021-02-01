@@ -6,8 +6,6 @@ $(document).ready(function() {
           var isPresentInRow = true;
           array.forEach( element => {
           				isPresentInRow = isPresentInRow && ($(this).text().toLowerCase().indexOf(element) > -1)
-                        console.log(element);
-                        console.log(isPresentInRow);
                         });
           $(this).toggle(isPresentInRow)
         });
