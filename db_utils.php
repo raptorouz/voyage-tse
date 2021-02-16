@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(-1);
 	/*
   A METTRE DANS UN AUTRE FICHIER
 
