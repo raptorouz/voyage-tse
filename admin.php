@@ -39,6 +39,34 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 </head>
 <body>
 
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <form>
+	          <div class="form-group">
+	            <label for="recipient-name" class="col-form-label">Recipient:</label>
+	            <input type="text" class="form-control" id="recipient-name">
+	          </div>
+	          <div class="form-group">
+	            <label for="message-text" class="col-form-label">Message:</label>
+	            <textarea class="form-control" id="message-text"></textarea>
+	          </div>
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary">Send message</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 	<div class="sidenav">
         <img class="img-responsive logo" src="res/img/tse_logo_small.png" alt="">
         <a href="index.php"><i class="fas fa-home"></i> Accueil</a>
@@ -108,7 +136,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 							*/
 							echo '
 							<td>
-								<a href="modify.php?id='.$value[ 'id' ].'"><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button></a>
+								<a href="modify.php?id='.$value[ 'id' ].'"><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button></a>
 							</td>
 							<td>
 								<button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" onclick="deleteRow(this,'.$value[ 'id' ].')" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
