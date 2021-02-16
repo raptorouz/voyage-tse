@@ -15,10 +15,10 @@ ini_set("display_errors", 1);
 		$user = $url["user"];
 		$password = $url["pass"];
 		$database = substr($url["path"], 1);
-	
+
 		$mysqli_connection = mysqli_connect($adress, $user, $password, $database, $port);
 		mysqli_set_charset($mysqli_connection, "utf8");
-		
+
 		if ($mysqli_connection->connect_error) {
 			die('Connect Error (' . $mysqli_connection->connect_errno . ') '
 					. $mysqli_connection->connect_error);
@@ -302,6 +302,28 @@ ini_set("display_errors", 1);
 
 		return check_voyage_id($id_voyage) ?  mysqli_query($con,$query) : die("Voyage ID doesnt exist");
 	}
+
+
+
+	/*
+	* modify_voyage_with_id : modifie un voyage avec de nouvelles valeurs
+
+	* de voyage
+	*
+	* @params nom de la table (string)
+	* @return bool
+	*/
+	function modify_voyage_with_id($id_voyage,$pays,$ville,$date_debut,$date_fin){
+		// Connection DB
+		$con = connect_db();
+
+		// Requete
+		$query = "UPDATE voyage SET pays='{$pays}', ville='{$ville}', date_debut='{$date_debut}', date_fin='{$date_fin}' WHERE id=$id_voyage";
+
+		return check_voyage_id($id_voyage) ?  mysqli_query($con,$query) : die("Voyage ID doesnt exist");
+	}
+
+
 
 	function voyages2array(){
 		$res =  get_voyages_with_students();
