@@ -16,7 +16,8 @@
 		$database = substr($url["path"], 1);
 	
 		$mysqli_connection = mysqli_connect($adress, $user, $password, $database, $port);
-
+		$mysqli_set_charset($mysqli_connection, "utf8");
+		
 		if ($mysqli_connection->connect_error) {
 			die('Connect Error (' . $mysqli_connection->connect_errno . ') '
 					. $mysqli_connection->connect_error);
