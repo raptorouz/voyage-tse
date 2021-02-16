@@ -136,7 +136,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 							*/
 							echo '
 							<td>
-								<a href="modify.php?id='.$value[ 'id' ].'"><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button></a>
+								<button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"	 data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
 							</td>
 							<td>
 								<button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" onclick="deleteRow(this,'.$value[ 'id' ].')" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
