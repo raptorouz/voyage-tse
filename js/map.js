@@ -10,7 +10,7 @@ var locations = [];
 
 // load jQuery from a CDN or your server
 function geocode(query){
-     var geoCoords = {}
+     var geoCoords = {};
      var data = $.ajax({
       async : false,
       url: 'https://api.opencagedata.com/geocode/v1/json',
@@ -52,7 +52,7 @@ function useReturnData(data){
     myvar = data;
     a.push(data);
 
-};
+}
 
 /*
 
@@ -65,7 +65,7 @@ function initMap(arrayOfStudents) {
     });
 
     // Marker content initialization
-    contentString = ""
+    contentString = "";
     const infowindow = new google.maps.InfoWindow({
         content: contentString,
         //maxWidth: 400,

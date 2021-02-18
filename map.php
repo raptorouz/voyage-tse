@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Carte des voyages</title>
     <!-- Google API -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
-    <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkHaxPxWc7BgplBDFY93ek58ThJvpWJD4&callback=initMap&libraries=&v=weekly"
-    defer>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkHaxPxWc7BgplBDFY93ek58ThJvpWJD4&callback=initMap&libraries=&v=weekly" defer>
     </script>
 
     <!-- jQuery -->
@@ -30,6 +29,7 @@
 
 
 </head>
+
 <body>
 
 
@@ -37,24 +37,26 @@
     <div class="sidenav">
         <img class="img-responsive logo" src="res/img/tse_logo_small.png" alt="">
         <a href="index.php"><i class="fas fa-home"></i> Accueil</a>
-        <a href="admin.php"><i class="fas fa-plane"></i>  Voyages  </a>
+        <a href="admin.php"><i class="fas fa-plane"></i> Voyages </a>
         <a href="map.php"><i class="fas fa-map-marked-alt"></i> Carte du monde</a>
     </div>
 
     <!--
     <div id="dom-target" style="display: none;">
         <?php
-            // require_once('db_utils.php');
+        // require_once('db_utils.php');
 
-            //$etu = get_voyages_with_students(); // Again, do some operation, get the output.
-            //echo htmlspecialchars($etu); /* You have to escape because the result                                   will not be valid HTML otherwise. */
+        //$etu = get_voyages_with_students(); // Again, do some operation, get the output.
+        //echo htmlspecialchars($etu); /* You have to escape because the result                                   will not be valid HTML otherwise. */
         ?>
     </div> -->
     <script>
-        var students = <?php require_once('db_utils.php'); echo json_encode(voyages2array()); ?>; // Don't forget the extra semicolon!
+        var students = <?php require_once('db_utils.php');
+                        echo json_encode(voyages2array()); ?>; // Don't forget the extra semicolon!
         arrayStudentsToMaps(students);
     </script>
     <div class="main" id="map"></div>
 
 </body>
+
 </html>

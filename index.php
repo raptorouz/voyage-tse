@@ -7,6 +7,7 @@ html5up.net | @ajlkn
 Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
+
 <head>
 	<title>Student Management</title>
 	<!-- Required meta tags -->
@@ -27,6 +28,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 	<link rel="stylesheet" href="//unpkg.com/bootstrap-select-country@4.0.0/dist/css/bootstrap-select-country.min.css" type="text/css" />
 
 </head>
+
 <body>
 	<?php
 	session_start();
@@ -34,27 +36,28 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
 
 	/**
-	* Creates a token usable in a form
-	* @return string
-	*/
-	function getToken(){
+	 * Creates a token usable in a form
+	 * @return string
+	 */
+	function getToken()
+	{
 		$token = sha1(mt_rand());
-		if(!isset($_SESSION['tokens'])){
+		if (!isset($_SESSION['tokens'])) {
 			$_SESSION['tokens'] = array($token => 1);
-		}
-		else{
+		} else {
 			$_SESSION['tokens'][$token] = 1;
 		}
 		return $token;
 	}
 
 	/**
-	* Check if a token is valid. Removes it from the valid tokens list
-	* @param string $token The token
-	* @return bool
-	*/
-	function isTokenValid($token){
-		if(!empty($_SESSION['tokens'][$token])){
+	 * Check if a token is valid. Removes it from the valid tokens list
+	 * @param string $token The token
+	 * @return bool
+	 */
+	function isTokenValid($token)
+	{
+		if (!empty($_SESSION['tokens'][$token])) {
 			unset($_SESSION['tokens'][$token]);
 			return true;
 		}
@@ -63,22 +66,20 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
 	// Check if a form has been sent
 	$postedToken = filter_input(INPUT_POST, 'token');
-	if(!empty($postedToken)){
-		if(isTokenValid($postedToken)){
+	if (!empty($postedToken)) {
+		if (isTokenValid($postedToken)) {
 
 			$id_etudiant = check_etudiant($_POST["mail"]);
-			if ($id_etudiant == FALSE){
-				$id_etudiant = insert_etudiant($_POST["prenom"],$_POST["nom"],$_POST["promo"],$_POST["mail"]);
+			if ($id_etudiant == FALSE) {
+				$id_etudiant = insert_etudiant($_POST["prenom"], $_POST["nom"], $_POST["promo"], $_POST["mail"]);
 			}
 
-			if(insert_voyage($id_etudiant,$_POST["pays"],$_POST["ville"],$_POST["date_debut"],$_POST["date_fin"])){
+			if (insert_voyage($id_etudiant, $_POST["pays"], $_POST["ville"], $_POST["date_debut"], $_POST["date_fin"])) {
 				header("location: admin.php");
-			}
-			else{
+			} else {
 				echo "erreur";
 			}
-		}
-		else{
+		} else {
 			header("location: admin.php");
 		}
 	}
@@ -92,13 +93,13 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 						<img class="tse" src="res/img/tse_logo_small.png" alt="logo" style="height: 80px;">
 						<h2 class="display-4 py-2">Enregistrer un Voyage</h2>
 						<div class="px-2">
-							<form action="index.php" class="justify-content-center" method="post" >
+							<form action="index.php" class="justify-content-center" method="post">
 
-								<input type="hidden" name="token" value="<?php echo $token;?>"/>
+								<input type="hidden" name="token" value="<?php echo $token; ?>" />
 
 								<div class="form-group">
 									<label for="prenom" class="col-form-label" style="text-align:left;">Prenom</label>
-									<input type="text" class="form-control" placeholder="Jane" id="prenom" name ="prenom"required>
+									<input type="text" class="form-control" placeholder="Jane" id="prenom" name="prenom" required>
 									<div class="valid-feedback">Valid.</div>
 									<div class="invalid-feedback">Please fill out this field.</div>
 
@@ -111,7 +112,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 								</div>
 								<div class="form-group">
 									<label for="example-email-input" class="col-form-label" style="text-align:left;">Email</label>
-									<input class="form-control" type="email" id="example-email-input" placeholder= "prenom.nom@telecom-st-etienne.fr" name ="mail"required>
+									<input class="form-control" type="email" id="example-email-input" placeholder="prenom.nom@telecom-st-etienne.fr" name="mail" required>
 									<div class="valid-feedback">Valid.</div>
 									<div class="invalid-feedback">Please fill out this field.</div>
 								</div>
@@ -131,14 +132,14 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 								</div>
 								<div class="form-group">
 									<label for="pays" class="col-form-label" style="text-align:left;">Pays</label>
-									<select class="form-control selectpicker countrypicker" data-default="FR" data-live-search="true" id="pays" name="pays" ></select>
+									<select class="form-control selectpicker countrypicker" data-default="FR" data-live-search="true" id="pays" name="pays"></select>
 									<script>
-									$('.countrypicker').countrypicker();
+										$('.countrypicker').countrypicker();
 									</script>
 								</div>
 								<div class="form-group">
 									<label for="ville" class="col-form-label" style="text-align:left;">Ville</label>
-									<input class="form-control" type="text" id="ville" placeholder="Saint-Etienne" name="ville"required>
+									<input class="form-control" type="text" id="ville" placeholder="Saint-Etienne" name="ville" required>
 								</div>
 
 								<div class="form-group">
@@ -150,14 +151,15 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 									<input class="form-control" type="date" id="date-fin" name="date_fin" required>
 								</div>
 								<button type="submit" class="btn btn-primary btn-lg">Valider</button>
-					</form>
+							</form>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</div>
-</section>
+	</section>
 
 
 </body>
+
 </html>
